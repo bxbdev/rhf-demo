@@ -1,4 +1,5 @@
 import './App.css'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools'
 import axios from 'axios'
@@ -29,12 +30,20 @@ function App() {
   }
 
   const form = useForm<UserType>({
-    defaultValues: () => {
-      return fetchUserInfo()
-    }
+    // Set values by useForm
+    // defaultValues: () => {
+    //   return fetchUserInfo()
+    // }
   })
 
-  const { register, control, handleSubmit, formState: { errors } } = form
+  // Set fields' value by useEffect
+  useEffect(() => {
+    fetchUserInfo().then( (userData) => {
+      form.reset( userData )
+    })
+  }, [])
+
+  const { register, control, handleSubmit, reset, formState: { errors } } = form
   
   const onSubmit = (data: UserType) => {
     console.log(data)
@@ -45,7 +54,7 @@ function App() {
       <div className="App">
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <h1>React Hook Form Demo</h1>
-          <h3>User information</h3>
+          <h3>Information</h3>
 
           {/* Name start */}
           <div className="form-group">
@@ -93,7 +102,11 @@ function App() {
             <label htmlFor="zipcode">Zipcode</label>
             <input type="text" {...register('zipcode')} />
           </div>
-          <button className="btn submit" type="submit">Submit</button>
+
+          <div className="actions">
+            <button className="btn reset" type="reset" onClick={() => reset()}>Reset</button>
+            <button className="btn submit" type="submit">Submit</button>
+          </div>
         </form>
       </div>
       <DevTool control={control} />

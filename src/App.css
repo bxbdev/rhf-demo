@@ -35,15 +35,27 @@ input {
 .btn {
   border: none;
   color: #fff;
-  background-color: rgb(64,212,218);
+  
   padding: 12px;
   border-radius: 8px;
   font-size: 1.6rem;
   cursor: pointer;
 }
+.submit {
+  background-color: rgb(64,212,218);
+}
+
+.reset {
+  background-color: rgb(255, 58, 130);
+}
+
 .error {
   color: #ff0000;
   font-size: 1.2rem;
   padding-top: 6px;
   text-align: right;
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
 }
