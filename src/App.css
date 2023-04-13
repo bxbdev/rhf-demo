@@ -1,0 +1,49 @@
+.App {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+form {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.form-control {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+}
+
+label {
+  color: #888;
+}
+
+input {
+  border:1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  outline: none;
+}
+
+.btn {
+  border: none;
+  color: #fff;
+  background-color: rgb(64,212,218);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.error {
+  color: #ff0000;
+  font-size: 1.2rem;
+  padding-top: 6px;
+  text-align: right;
+}
